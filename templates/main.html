@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap & jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    
+    <!-- Intro.js (For guided walkthroughs) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js" type="text/javascript"></script>
+
+    <!-- Custom styles and scripts -->
+    <script src="static/b-typeahead.min.js"></script>
+    <link rel="stylesheet" href="static/styles.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
+    <script src="static/scripts.js" defer></script>
+
+    <title>MedWise-AI</title>
+</head>
+
+<body class="bg-light">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar sticky-top navbar-dark bg-dark shadow">
+        <a class="navbar-brand text-white" id="go-to-top"><b> MedWise - A I </b></a>
+        <form data-step="6" data-intro="Sync with Google for additional functions" class="form-inline my-2 my-lg-0">
+        
+            <a class="btn btn-warning text-white mr-sm-0" onclick="startHelp();"><b> Help </b></a>
+
+
+        </form>
+    </nav>
+
+    <br/><br/>
+
+    <h1  class="text-dark text-center" style="font-family: Aldrich, sans-serif;">
+        <b> Let's cure that illness with A.I! </b>
+    </h1>
+
+    <br/><br/>
+
+    <div class="d-flex justify-content-center align-items-center" style="height: 80vh; margin-top: -100px;">
+        <div class="card w-50 text-center shadow p-4 bg-white rounded" id="sbox">
+            <div class="card-body">
+                <form id="send" action="" method="">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Look For a Disease</h5>
+                                    <p class="card-text">
+                                        Feeling unwell? Don't worry, just tell us your symptoms and our AI will find out what's wrong.
+                                    </p>
+                                    <br>
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control typeahead" id="symptom" placeholder="Symptoms" autocomplete="off">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" onclick="appendSymp();" type="button">Add</button>
+                                        </div>
+                                    </div>
+                                    <div id="tags-container">
+                                        <div id="tags"></div> <!-- Symptoms will be added here -->
+                                    </div>
+                                    <br>    
+                                    <button type="button" class="btn btn-warning" id="find_out" style="height:50px;width:200px;">Find Out</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+     
+
+    <br/>
+
+    <!-- Symptom Suggestion Section -->
+    <div id="details" class="center text-center" style="font-family: Aldrich, sans-serif;">
+        <h2 class="boxy">Please answer the following questions.</h3>
+    </div>
+
+    <br/>
+
+    <!-- Dynamic Cards for Symptom Suggestions -->
+    <div id="cards">
+        <!-- Symptoms will be dynamically inserted here -->
+    </div>
+
+    <!-- "Your Symptoms" card is hidden by default and only appears after clicking "Find Out" -->
+    <div class="card w-75 center text-center shadow p-3 mb-5 bg-white rounded boxy" id="your-symptoms-card" style="display: none;">
+        <div class="card-body">
+            <p class="card-title">Your symptoms</p>
+            <h5 class="card-text" id="positive"></h5>  <!-- Symptoms will be added here -->
+        </div>
+        <button type="button" id="disease" class="btn btn-warning btn-lg">SEARCH</button>
+    </div>
+
+    <br/>
+
+    <!-- Google Calendar Integration -->
+    <script src="static/symptomsdata.js"></script>
+
+    <!-- Google API -->
+    <script async defer src="https://apis.google.com/js/api.js"
+        onload="this.onload=function(){};handleClientLoad()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+
+</body>
+</html>
